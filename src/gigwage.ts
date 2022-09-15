@@ -183,11 +183,11 @@ export default class GigwageService {
       });
       try {
         const response = await axios.request({ method, url: url, headers: headers, data });
-        return response.data;
+        return response;
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const err = error as { response: { data: ErrorReponse } };
-          return err.response.data;
+          return err.response;
         } else {
           const err = error as { message: string };
           throw new Error(err.message);
