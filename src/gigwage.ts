@@ -284,7 +284,7 @@ export default class GigwageService {
     );
   }
 
-  public async listSubscription() {
+  public async listSubscriptions() {
     return this.get<{ subscriptions: Subscription[] }>("api/v1/subscriptions");
   }
 }

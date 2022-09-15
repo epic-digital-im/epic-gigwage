@@ -15,8 +15,8 @@
     <a href="https://github.com/epicdigitalmedia/epic-gigwage">
       <img alt="GitHub Total Downloads" src="https://img.shields.io/npm/dt/@epicdm/gigwage?color=336791&label=Total%20downloads" />
     </a>
- <a href="https://github.com/epicdigitalmedia/epic-gigwage">
-      <img alt="GitHub release" src="https://img.shields.io/github/release/epicdigitalmedia/@epicdm/gigwage.svg?style=flat&color=336791" />
+    <a href="https://github.com/epicdigitalmedia/epic-gigwage">
+      <img alt="GitHub release" src="https://img.shields.io/github/release/epicdigitalmedia/epic-gigwage.svg?style=flat&color=336791" />
     </a>
     <br />
     <br />
@@ -30,7 +30,7 @@
 Not all methods implemented yet.  Please check back soon.
 
 # Installation
-```bash 
+```bash
 yarn add @epicdm/gigwage
 npm install @epicdm/gigwage
 ```
