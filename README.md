@@ -1,22 +1,22 @@
 <p align="center">
- <img width="100px" src="https://raw.githubusercontent.com/epicdigitalmedia/epic-ts-npm-boilerplate/main/.github/images/favicon512x512-npm.png" align="center" alt=":package: epic-ts-npm-boilerplate" />
+ <img width="100px" src="https://raw.githubusercontent.com/epicdigitalmedia/epic-gigwage/main/.github/images/favicon512x512-npm.png" align="center" alt=":package: epic-gigwage" />
  <h2 align="center">:package: @epicdm/gigwage</h2>
  <p align="center">TypeScript Gigwage Client API and Express Middleware</p>
   <p align="center">
     <a href="https://github.com/epicdigitalmedia/epic-gigwage/issues">
-      <img alt="Issues" src="https://img.shields.io/github/issues/epicdigitalmedia/epic-ts-npm-boilerplate?style=flat&color=336791" />
+      <img alt="Issues" src="https://img.shields.io/github/issues/epicdigitalmedia/epic-gigwage?style=flat&color=336791" />
     </a>
     <a href="https://github.com/epicdigitalmedia/epic-gigwage/pulls">
-      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/epicdigitalmedia/epic-ts-npm-boilerplate?style=flat&color=336791" />
+      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/epicdigitalmedia/epic-gigwage?style=flat&color=336791" />
     </a>
      <a href="https://github.com/epicdigitalmedia/epic-gigwage">
-      <img alt="GitHub Downloads" src="https://img.shields.io/npm/dw/epic-ts-npm-boilerplate?style=flat&color=336791" />
+      <img alt="GitHub Downloads" src="https://img.shields.io/npm/dw/@epicdm/gigwage?style=flat&color=336791" />
     </a>
     <a href="https://github.com/epicdigitalmedia/epic-gigwage">
-      <img alt="GitHub Total Downloads" src="https://img.shields.io/npm/dt/epic-ts-npm-boilerplate?color=336791&label=Total%20downloads" />
+      <img alt="GitHub Total Downloads" src="https://img.shields.io/npm/dt/@epicdm/gigwage?color=336791&label=Total%20downloads" />
     </a>
  <a href="https://github.com/epicdigitalmedia/epic-gigwage">
-      <img alt="GitHub release" src="https://img.shields.io/github/release/epicdigitalmedia/epic-ts-npm-boilerplate.svg?style=flat&color=336791" />
+      <img alt="GitHub release" src="https://img.shields.io/github/release/epicdigitalmedia/@epicdm/gigwage.svg?style=flat&color=336791" />
     </a>
     <br />
     <br />
@@ -126,7 +126,7 @@ git clone https://github.com/epicdigitalmedia/epic-gigwage
 ### Open the directory and run the script line:
 
 ```bash
-cd epic-ts-npm-boilerplate 
+cd epic-gigwage
 ```
 ```bash
 yarn # or npm i
@@ -140,7 +140,7 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 Give a ⭐️ if this project helped you!
 
-[![codecov](https://codecov.io/gh/epicdigitalmedia/epic-ts-npm-boilerplate/branch/main/graph/badge.svg?token=Q9fr548J0D)](https://codecov.io/gh/epicdigitalmedia/epic-ts-npm-boilerplate)
+[![codecov](https://codecov.io/gh/epicdigitalmedia/epic-gigwage/branch/main/graph/badge.svg?token=Q9fr548J0D)](https://codecov.io/gh/epicdigitalmedia/epic-gigwage)
 
 ## 📝 License
 
