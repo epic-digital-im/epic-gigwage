@@ -3,25 +3,25 @@
  <h2 align="center">:package: @epicdm/gigwage</h2>
  <p align="center">TypeScript Gigwage Client API and Express Middleware</p>
   <p align="center">
-    <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate/issues">
+    <a href="https://github.com/epicdigitalmedia/epic-gigwage/issues">
       <img alt="Issues" src="https://img.shields.io/github/issues/epicdigitalmedia/epic-ts-npm-boilerplate?style=flat&color=336791" />
     </a>
-    <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate/pulls">
+    <a href="https://github.com/epicdigitalmedia/epic-gigwage/pulls">
       <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/epicdigitalmedia/epic-ts-npm-boilerplate?style=flat&color=336791" />
     </a>
-     <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate">
+     <a href="https://github.com/epicdigitalmedia/epic-gigwage">
       <img alt="GitHub Downloads" src="https://img.shields.io/npm/dw/epic-ts-npm-boilerplate?style=flat&color=336791" />
     </a>
-    <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate">
+    <a href="https://github.com/epicdigitalmedia/epic-gigwage">
       <img alt="GitHub Total Downloads" src="https://img.shields.io/npm/dt/epic-ts-npm-boilerplate?color=336791&label=Total%20downloads" />
     </a>
- <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate">
+ <a href="https://github.com/epicdigitalmedia/epic-gigwage">
       <img alt="GitHub release" src="https://img.shields.io/github/release/epicdigitalmedia/epic-ts-npm-boilerplate.svg?style=flat&color=336791" />
     </a>
     <br />
     <br />
-  <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate/issues/new/choose">Report Bug</a>
-  <a href="https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate/issues/new/choose">Request Feature</a>
+  <a href="https://github.com/epicdigitalmedia/epic-gigwage/issues/new/choose">Report Bug</a>
+  <a href="https://github.com/epicdigitalmedia/epic-gigwage/issues/new/choose">Request Feature</a>
   </p>
 
 <p align="center"><strong>Typescript Gigwage Client w/ Express Middelware for validating incoming webhooks</strong> 🚀</p>
@@ -60,7 +60,7 @@ const gigwageService = new GigwageService({
   gigwageService.del
 */
 
-gigwageService.get<{ contractors: [] }>("api/v1/contractors").then((response) => {
+gigwageService.get<{ contractors: Contractor[] }>("api/v1/contractors").then((response) => {
   const contractors = response.data.contractors;
 });
 
@@ -121,7 +121,7 @@ route.post(
 
 > Clone this repository: 
 ```bash 
-git clone https://github.com/epicdigitalmedia/epic-ts-npm-boilerplate
+git clone https://github.com/epicdigitalmedia/epic-gigwage
 ```
 ### Open the directory and run the script line:
 

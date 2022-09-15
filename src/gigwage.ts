@@ -249,7 +249,7 @@ export default class GigwageService {
   }
 
   public async getContractors() {
-    return this.get<{ contractors: [] }>("api/v1/contractors");
+    return this.get<{ contractors: Contractor[] }>("api/v1/contractors");
   }
 
   public async createContractor(contractor: Partial<Contractor>) {
