@@ -5,12 +5,12 @@ import CryptoJS from "crypto-js";
 
 export declare type GigwageEnvironments = 'production' | 'sandbox';
 
-const ENVIRONMENTS: { [key: string]: string } = {
+export const ENVIRONMENTS: { [key: string]: string } = {
   production: 'https://api.gigwage.com',
   sandbox: 'https://api.sandbox.gigwage.com',
 }
 
-interface IGigwageClientOptions {
+export interface IGigwageClientOptions {
   /**
    * The Gig Wage API environment.
    */
@@ -38,7 +38,7 @@ interface IGigwageClientOptions {
   baseUrl?: string;
 }
 
-export interface GWContractor {
+export interface Contractor {
   id: number;
   email: string;
   first_name: string;
@@ -61,7 +61,7 @@ export interface GWContractor {
 
 export interface MetaData { [key: string]: string }
 
-export interface GWLineItem {
+export interface LineItem {
   amount: number;
   job_id: string;
   external_id: string;
@@ -70,21 +70,21 @@ export interface GWLineItem {
   metadata: MetaData;
 }
 
-export interface GWPaymentPayload {
+export interface PaymentPayload {
   nonce: string;
   contractor_id: number;
   external_id?: string;
   interchange?: 'true' | 'false' | null;
   debit_card?: 'true' | 'false' | null;
-  line_items: GWLineItem[];
+  line_items: LineItem[];
 }
 
-export interface GWPaymentSuccessReponse {
+export interface PaymentSuccessReponse {
   id: number;
   amount: number;
-  line_items: GWLineItem[],
+  line_items: LineItem[],
   contractor_id: number;
-  contractor: GWContractor;
+  contractor: Contractor;
   created_at: string;
   completed_at: string;
   status: string;
@@ -95,14 +95,14 @@ export interface GWPaymentSuccessReponse {
   net_deposit_amount: number;
 }
 
-export interface GWErrorReponse {
+export interface ErrorReponse {
   error: string;
   messages: [
     string[]
   ]
 }
 
-export interface GWSubscription {
+export interface Subscription {
   id: number;
   webhook_type: string;
   url: string;
@@ -110,7 +110,7 @@ export interface GWSubscription {
   created_at: string | null;
 }
 
-export interface GWTransaction {
+export interface Transaction {
   id: number;
   incoming: number;
   outgoing: number;
@@ -186,7 +186,7 @@ export default class GigwageService {
         return response.data;
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          const err = error as { response: { data: GWErrorReponse } };
+          const err = error as { response: { data: ErrorReponse } };
           return err.response.data;
         } else {
           const err = error as { message: string };
@@ -245,23 +245,23 @@ export default class GigwageService {
   }
 
   public async listTransactions() {
-    return this.get<{ current_balance: string, available_balance: string, transactions: GWTransaction[] }>("api/v1/ledger");
+    return this.get<{ current_balance: string, available_balance: string, transactions: Transaction[] }>("api/v1/ledger");
   }
 
   public async getContractors() {
     return this.get<{ contractors: [] }>("api/v1/contractors");
   }
 
-  public async createContractor(contractor: Partial<GWContractor>) {
-    return this.post<{ contractor: GWContractor }>("api/v1/contractors", { contractor });
+  public async createContractor(contractor: Partial<Contractor>) {
+    return this.post<{ contractor: Contractor }>("api/v1/contractors", { contractor });
   }
 
-  public async sendPayment(payment: GWPaymentPayload) {
-    return this.post<{ payment: GWPaymentSuccessReponse }>("api/v1/payments", { payment });
+  public async sendPayment(payment: PaymentPayload) {
+    return this.post<{ payment: PaymentSuccessReponse }>("api/v1/payments", { payment });
   }
 
   public async createSubscription({ webhook_type, url }: { webhook_type: string, url: string }) {
-    return this.post<{ subscription: GWSubscription }>(
+    return this.post<{ subscription: Subscription }>(
       "api/v1/subscriptions",
       {
         subscription: {
@@ -273,18 +273,18 @@ export default class GigwageService {
   }
 
   public async reactivateSubscription(id: number) {
-    return this.put<{ subscription: GWSubscription }>(
+    return this.put<{ subscription: Subscription }>(
       `api/v1/subscriptions/${id}`
     );
   }
 
   public async deleteSubscription(id: number) {
-    return this.del<{ subscription: GWSubscription }>(
+    return this.del<{ subscription: Subscription }>(
       `api/v1/subscriptions/${id}`
     );
   }
 
   public async listSubscription() {
-    return this.get<{ subscriptions: GWSubscription[] }>("api/v1/subscriptions");
+    return this.get<{ subscriptions: Subscription[] }>("api/v1/subscriptions");
   }
 }
