@@ -27,7 +27,7 @@
 <p align="center"><strong>Typescript Gigwage Client w/ Express Middelware for validating incoming webhooks</strong> 🚀</p>
 
 # Beta - Currently in Development
-Adding convenience methods for certain endpoings, eg: listSubscriptions.  Not all methods implemented yet.  Please check back soon.
+Adding convenience methods for certain endpoints, eg: listSubscriptions.  Not all methods implemented yet.  Please check back soon.
 
 # Installation
 ```bash
