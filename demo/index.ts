@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import express, { Router } from 'express';
 import GigwageService from '../src/gigwage';
 
 const route = Router();
 
-export default (app: any) => {
+export default (app: express.Application) => {
 
   const gigwageService = new GigwageService({
     config: {
@@ -29,7 +29,7 @@ export default (app: any) => {
           response.status(200).send(`I did it!`);
         } catch (err: any) {
           console.log(err);
-          response.status(500).send(`Webhook Error: ${err.message}`);
+          response.status(500).send(`Webhook Error`);
           return;
         }
       },
