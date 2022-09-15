@@ -133,7 +133,7 @@ interface RawRequest extends express.Request {
 }
 
 export default class GigwageService {
-  public request: <ResponseData>(endpoint: string, method: Method, body: any) => Promise<AxiosResponse<ResponseData>>;
+  public request: <ResponseData>(endpoint: string, method: Method, body: any) => Promise<AxiosResponse<ResponseData, any>>;
   config: IGigwageClientOptions;
 
   constructor({ config }: { config: IGigwageClientOptions }) {
@@ -149,7 +149,7 @@ export default class GigwageService {
     data,
     testTimestamp
   }: GenerateRequestHeadersOptions) {
-    const timestamp = testTimestamp !== null && testTimestamp !== void 0 ? testTimestamp : new Date().getTime().toString();
+    const timestamp = testTimestamp ? testTimestamp : new Date().getTime().toString();
     const stringifiedData = JSON.stringify(data);
     const payload = [
       timestamp,
@@ -186,7 +186,7 @@ export default class GigwageService {
         return response;
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          const err = error as { response: { data: ErrorReponse } };
+          const err = error as any;
           return err.response;
         } else {
           const err = error as { message: string };

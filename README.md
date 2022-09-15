@@ -60,9 +60,10 @@ const gigwageService = new GigwageService({
   gigwageService.del
 */
 
-gigwageService.get<{ contractors: Contractor[] }>("api/v1/contractors").then((response) => {
-  const contractors = response.data.contractors;
-});
+gigwageService.get<{ contractors: Contractor[] }>("api/v1/contractors")
+  .then((response) => {
+    const contractors = response.data.contractors;
+  });
 
 gigwageService.post<{ contractor: Contractor }>("api/v1/contractors", {
   contractor: {
@@ -85,14 +86,16 @@ gigwageService.post<{ contractor: Contractor }>("api/v1/contractors", {
 });
 
 // Reactivate Subscription
-gigwageService.put<{ subscription: Subscription }>(`api/v1/subscriptions/13`).then((response) => {
-  const subscription = response.data.subscription;
-});
+gigwageService.put<{ subscription: Subscription }>(`api/v1/subscriptions/13`)
+  .then((response) => {
+    const subscription = response.data.subscription;
+  });
 
 // Delete Subscription
-gigwageService.del<{ subscription: Subscription }>(`api/v1/subscriptions/13`).then((response) => {
-  const subscription = response.data.subscription;
-});  
+gigwageService.del<{ subscription: Subscription }>(`api/v1/subscriptions/13`)
+  .then((response) => {
+    const subscription = response.data.subscription;
+  });  
 ```
 
 # Express Middleware Usage, see [examples](https://github.com/epicdigitalmedia/epic-gigwage/tree/main/demo)
