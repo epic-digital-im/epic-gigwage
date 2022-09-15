@@ -1,5 +1,6 @@
 <p align="center">
  <img width="100px" src="https://raw.githubusercontent.com/epicdigitalmedia/epic-gigwage/main/.github/images/favicon512x512-npm.png" align="center" alt=":package: epic-gigwage" />
+ <img width="100px" src="https://avatars.githubusercontent.com/u/113625277?s=200&v=4" align="center" alt="Epic Digital Interactive Media LLC" />
  <h2 align="center">:package: @epicdm/gigwage</h2>
  <p align="center">TypeScript Gigwage Client API and Express Middleware</p>
   <p align="center">
