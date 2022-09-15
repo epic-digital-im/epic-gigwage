@@ -71,6 +71,16 @@ gigwageService.post<{ contractor: Contractor }>("api/v1/contractors", {
     email: 'john@doe.com',
   }
 }).then((response) => {
+  if (response.data.error) {
+    /* Axios handled error, includes validation error response:
+    {
+      "error": "Validation Failed",
+      "errors": [
+        "Email missing",
+      ]
+    }
+    */
+  }
   const contractor = response.data.contractor;
 });
 
