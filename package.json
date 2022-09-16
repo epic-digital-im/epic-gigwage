@@ -1,7 +1,7 @@
 {
   "name": "@epicdm/gigwage",
   "version": "0.1.1",
-  "description": "Gigwage TS Client and Express Middleware",
+  "description": "Gigwage TS Client and Express Middleware for the Gigwage API",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
