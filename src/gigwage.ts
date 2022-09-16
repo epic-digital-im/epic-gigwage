@@ -149,7 +149,7 @@ export default class GigwageService {
     data,
     testTimestamp
   }: GenerateRequestHeadersOptions) {
-    const timestamp = testTimestamp !== null && testTimestamp !== void 0 ? testTimestamp : new Date().getTime().toString();
+    const timestamp = testTimestamp ? testTimestamp : new Date().getTime().toString();
     const stringifiedData = JSON.stringify(data);
     const payload = [
       timestamp,
