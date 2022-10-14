@@ -38,6 +38,16 @@ export interface IGigwageClientOptions {
   baseUrl?: string;
 }
 
+export interface RequestPaging {
+  page?: number;
+  per_page?: number;
+  offset?: number;
+}
+
+export interface ContractorRequest extends RequestPaging {
+  q?: string;
+}
+
 export interface Contractor {
   id: number;
   email: string;
@@ -79,7 +89,12 @@ export interface PaymentPayload {
   line_items: LineItem[];
 }
 
-export interface PaymentSuccessReponse {
+export interface PaymentRequest extends RequestPaging {
+  contractor_id?: number;
+  includes?: string;
+}
+
+export interface Payment {
   id: number;
   amount: number;
   line_items: LineItem[],
@@ -132,6 +147,8 @@ interface RawRequest extends express.Request {
   buf: Buffer;
 }
 
+type RequstParams = PaymentRequest | ContractorRequest;
+
 export default class GigwageService {
   public request: <ResponseData>(endpoint: string, method: Method, body: any) => Promise<AxiosResponse<ResponseData, any>>;
   config: IGigwageClientOptions;
@@ -154,9 +171,10 @@ export default class GigwageService {
     const payload = [
       timestamp,
       method,
-      `/${endpoint}`,
+      `/${endpoint.split('?')[0]}`,
       data ? stringifiedData : undefined,
     ].join('');
+
     const bytes = CryptoJS.HmacSHA256(payload, apiSecret);
     const signature = bytes.toString(CryptoJS.enc.Hex);
     const headers = {
@@ -196,8 +214,10 @@ export default class GigwageService {
     };
   }
 
-  public get<ResponseData>(url: string) {
-    return this.request<ResponseData>(url, 'GET', null);
+  public get<ResponseData>(url: string, params?: RequstParams) {
+    const queryParams = new URLSearchParams(params);
+    const queryString = `?${queryParams.toString()}`;
+    return this.request<ResponseData>(params ? `${url}${queryString}` : url, 'GET', null);
   }
   public post<ResponseData>(url: string, body: any) {
     return this.request<ResponseData>(url, 'POST', body);
@@ -248,21 +268,37 @@ export default class GigwageService {
     return this.get<{ current_balance: string, available_balance: string, transactions: Transaction[] }>("api/v1/ledger");
   }
 
-  public async getContractors() {
-    return this.get<{ contractors: Contractor[] }>("api/v1/contractors");
+  public async getContractors(params?: ContractorRequest) {
+    return this.get<{ contractors: Contractor[] }>("api/v1/contractors", params);
   }
 
   public async createContractor(contractor: Partial<Contractor>) {
     return this.post<{ contractor: Contractor }>("api/v1/contractors", { contractor });
   }
 
+  public async getPayments(params?: PaymentRequest) {
+    return this.get<{ payments: Payment[] }>(`api/v1/payments`, params);
+  }
+
   public async sendPayment(payment: PaymentPayload) {
-    return this.post<{ payment: PaymentSuccessReponse }>("api/v1/payments", { payment });
+    return this.post<{ payment: Payment }>("api/v1/payments", { payment });
   }
 
   public async createSubscription({ webhook_type, url }: { webhook_type: string, url: string }) {
     return this.post<{ subscription: Subscription }>(
       "api/v1/subscriptions",
+      {
+        subscription: {
+          webhook_type,
+          url,
+        }
+      },
+    );
+  }
+
+  public async updateSubscription(id: number, { webhook_type, url }: Partial<Subscription>) {
+    return this.patch<{ subscription: Subscription }>(
+      `api/v1/subscriptions/${id}`,
       {
         subscription: {
           webhook_type,
