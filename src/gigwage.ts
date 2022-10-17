@@ -268,12 +268,20 @@ export default class GigwageService {
     return this.get<{ current_balance: string, available_balance: string, transactions: Transaction[] }>("api/v1/ledger");
   }
 
+  public async getContractor(id: number) {
+    return this.get<{ contractor: Contractor }>(`api/v1/contractors/${id}`);
+  }
+
   public async getContractors(params?: ContractorRequest) {
     return this.get<{ contractors: Contractor[] }>("api/v1/contractors", params);
   }
 
   public async createContractor(contractor: Partial<Contractor>) {
     return this.post<{ contractor: Contractor }>("api/v1/contractors", { contractor });
+  }
+
+  public async getPayment(id: number) {
+    return this.get<{ payment: Payment }>(`api/v1/payments/${id}`);
   }
 
   public async getPayments(params?: PaymentRequest) {
